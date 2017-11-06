@@ -1,0 +1,52 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.8.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.vart'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+//jar {
+//	baseName = 'gs-spring-boot'
+//	version =  '1.5.8'
+//}
+
+jar {
+    baseName = 'gs-securing-web'
+    version =  '0.1.0'
+}
+
+dependencies {
+//	compile('org.springframework.boot:spring-boot-starter')
+    compile 'org.springframework.boot:spring-boot-starter-redis:1.2.0.RELEASE'//redis driver
+//    compile 'org.hibernate:hibernate-core:4.3.6.Final'
+    compile 'mysql:mysql-connector-java:5.1.31'
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile 'javax.xml.bind:jaxb-api:2.2.9'//add this dependency to avoid class not found exception
+//	testCompile('org.springframework.boot:spring-boot-starter-test')
+//	compile("org.springframework.boot:spring-boot-starter-actuator")
+//	compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework.boot:spring-boot-starter-security")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+//    testCompile("org.springframework.security:spring-security-test")
+    testCompile("junit:junit")
+}
